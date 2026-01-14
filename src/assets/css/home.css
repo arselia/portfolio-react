@@ -1,0 +1,403 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #F9F9F9 0%, #FBF1F3 100%);
+    min-height: 100vh;
+}
+
+/* Header / Profile Section */
+header.profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 10px 30px rgba(252, 232, 237, 0.3);
+}
+
+.div1 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #FCE8ED, #FEE0E7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #666;
+    border: 3px solid #FFD7E1;
+    flex-shrink: 0;
+}
+
+.div2 h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #E91E63, #F8BBD9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.div2 h4 {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+ul.contact-info {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+}
+
+.contact-info a {
+    text-decoration: none;
+    color: #E91E63;
+    font-weight: 500;
+}
+
+/* Navigation */
+.div2 nav {
+    margin: 1.5rem 0;
+}
+
+.div2 nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.div2 nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.div2 nav a:hover {
+    color: #E91E63;
+}
+
+
+/* Main Content Sections */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main > section {
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(252, 232, 237, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+main > section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+main > section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #FEE0E7, #FFD7E1);
+    border-radius: 2px;
+}
+
+/* About Me Section */
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.button {
+    background: linear-gradient(135deg, #FEE0E7, #FFD7E1);
+    color: #333;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(254, 224, 231, 0.4);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 224, 231, 0.6);
+    background: linear-gradient(135deg, #FFD7E1, #FEE0E7);
+}
+
+/* Education Section */
+#education h3 {
+    font-size: 1.2rem;
+    color: #E91E63;
+    margin-bottom: 0.2rem;
+}
+#education p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#education ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#education li {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+#education ul ul {
+    margin-top: 0.5rem;
+}
+
+/* Organization Experience */
+#experience article.organization {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #FBF1F3, #FCE8ED);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+#experience article.organization:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(252, 232, 237, 0.4);
+}
+
+#experience article.organization a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#experience article.organization h3 {
+    font-size: 1.2rem;
+    color: #E91E63;
+    margin-bottom: 0.5rem;
+}
+
+#experience article.organization header p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+#experience article.organization ul {
+    margin-left: 1.5rem;
+}
+
+#experience article.organization li {
+    margin-bottom: 0.5rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Projects Section */
+.all-project {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+article.project-item {
+    background: linear-gradient(135deg, #FBF1F3, #FCE8ED);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(252, 232, 237, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+article.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(252, 232, 237, 0.5);
+}
+
+.project-item .image {
+    height: 200px;
+    background: linear-gradient(135deg, #FCE8ED, #FEE0E7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 1rem;
+}
+
+.project-item h3 {
+    padding: 1rem 1rem 0.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #E91E63;
+}
+
+.project-item p {
+    padding: 0 1rem 1rem;
+    color: #555;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.project-item .technologies {
+    padding: 0 1rem 1rem;
+    font-size: 0.9rem;
+}
+.project-item .technologies span {
+    background: rgba(233, 30, 99, 0.1);
+    color: #E91E63;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-item .button {
+    margin: 0 1rem 1rem;
+    align-self: flex-start;
+}
+
+
+/* Skills Section */
+.all-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background: linear-gradient(135deg, #FBF1F3, #FCE8ED);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(252, 232, 237, 0.2);
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(252, 232, 237, 0.4);
+    background: linear-gradient(135deg, #FCE8ED, #FEE0E7);
+}
+
+.skill-item .icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(252, 232, 237, 0.3);
+}
+
+.skill-item .icon img {
+    max-width: 35px;
+    max-height: 35px;
+}
+
+.skill-item .name-icon {
+    font-weight: 500;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Footer */
+footer.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header.profile {
+        flex-direction: column;
+        text-align: center;
+        margin: 1rem;
+        padding: 2rem 1rem;
+    }
+    
+    .div1 {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .div2 h1 {
+        font-size: 2rem;
+    }
+    
+    ul.contact-info {
+        justify-content: center;
+    }
+
+    .div2 nav ul {
+        justify-content: center;
+    }
+    
+    main > section {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .div2 h1 {
+        font-size: 1.8rem;
+    }
+    
+    .all-project {
+        grid-template-columns: 1fr;
+    }
+    
+    .all-skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
