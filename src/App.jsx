@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import Header from './components/header/Header';
 import About from './sections/about/About';
-import Experience from './sections/experience/Experience';
+import Experience from './sections/Experience/Experience';
 import Projects from './sections/projects/Projects';
-import Skills from './sections/skills/Skills';
+import Skills from './sections/Skills/Skills';
 import Homepage from './sections/homepage/Homepage';
 import SudokuGame from './sections/Games/sudoku';
 import './index.css';
