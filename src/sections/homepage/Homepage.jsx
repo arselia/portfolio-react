@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, Mic, User, Briefcase, Rocket, Zap, Puzzle } from 'lucide-react';
-import styles from './Homepage.module.css';
+import styles from './homepage.module.css';
 
 export default function Homepage({ onBookmarkClick }) {
   const [greeting, setGreeting] = useState('');

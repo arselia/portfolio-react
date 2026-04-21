@@ -1,6 +1,6 @@
 // src/sections/projects/Projects.jsx
 import { projectsData } from '../../data/portfolioData';
-import styles from './projects.module.css';
+import styles from './Projects.module.css';
 
 export default function Projects() {
   return (

@@ -1,6 +1,6 @@
 // src/sections/skills/Skills.jsx
 import { skillsData } from '../../data/portfolioData';
-import styles from './skills.module.css';
+import styles from './Skills.module.css';
 
 export default function Skills() {
   const row1 = skillsData.slice(0, 3);
