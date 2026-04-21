@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import Header from './components/header/Header';
-import About from './sections/about/About';
-import Experience from './sections/Experience/Experience';
-import Projects from './sections/projects/Projects';
-import Skills from './sections/Skills/Skills';
-import Homepage from './sections/homepage/Homepage';
-import SudokuGame from './sections/Games/sudoku';
-import './index.css';
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import About from "./sections/about/About";
+import Experience from "./sections/Experience/Experience";
+import SudokuGame from './sections/Games/sudoku'; 
 import CloseAll from './sections/Games/closeall';
+import Homepage from "./sections/homepage/Homepage";
+import Projects from "./sections/projects/Projects";
+import Skills from "./sections/Skills/Skills";
+import './index.css';
 
 function App() {
   const [theme, setTheme] = useState('light');
