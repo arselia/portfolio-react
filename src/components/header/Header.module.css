@@ -1,0 +1,316 @@
+/* ─── Header Container ─────────────────────────────────── */
+.safariHeader {
+  background: var(--safari-toolbar);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--safari-border);
+}
+
+/* ─── Top Row: Toolbar ───────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px; /* Padding samping ditambah biar lega */
+  height: 60px; /* Tinggi toolbar ditambah sedikit */
+}
+
+/* 🎯 NEW: Grouping the left side to balance the layout */
+.leftSide {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+  width: 160px; /* Match right side width */
+}
+
+.trafficLights {
+  display: flex;
+  gap: 8px;
+}
+
+.trafficLights div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dotRed    { background-color: #FF5F56; border: 1px solid #E0443E; }
+.dotYellow { background-color: #FFBD2E; border: 1px solid #DEA123; }
+.dotGreen  { background-color: #27C93F; border: 1px solid #1AAB29; }
+
+/* 🎯 NEW: Capsule style for Back/Forward Buttons */
+.navButtons {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4); 
+  border-radius: 20px;
+  padding: 2px 6px;
+  border: 1px solid rgba(150, 150, 150, 0.15);
+}
+
+[data-theme="dark"] .navButtons {
+  background: rgba(30, 30, 32, 0.4);
+}
+
+.navBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.navBtn:hover {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.navDivider {
+  width: 1px;
+  height: 14px;
+  background: var(--text-secondary);
+  opacity: 0.3;
+  margin: 0 4px;
+}
+
+/* INI BAGIAN YANG DIGEDEIN */
+.urlBar {
+  flex-grow: 1;
+  max-width: 650px; 
+  background: var(--card-bg);
+  border-radius: 40px;
+  padding: 10px 20px; 
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 10px 40px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.lockIcon {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* Add this below your existing .navBtn styles */
+.navBtn.disabled {
+  opacity: 0.3;
+  cursor: default;
+  transform: none !important; /* Prevents the hover zoom effect when disabled */
+}
+
+/* --- Bottom Row: Safari Tab Bar --- */
+.tabBar {
+    display: flex;
+    background: rgba(0, 0, 0, 0.05); /* Warna background bar utamanya */
+    padding: 4px; 
+    margin: 4px 12px; /* Kasih gap dikit dari pinggir window biar kelihatan melengkung ujungnya */
+    align-items: center;
+    
+    /* 1. Pojok kiri dan kanan bener-bener bulet (Radius di Bar Utama) */
+    border-radius: 20px; 
+    overflow: hidden; /* Biar tab di dalemnya nggak keluar dari jalur melengkung */
+}
+
+.tabWrapper {
+    display: flex;
+    flex: 1; 
+    align-items: center;
+    position: relative;
+    min-width: 80px; 
+}
+
+.tab {
+    flex-grow: 1;
+    height: 30px; /* Sedikit lebih tinggi biar pas */
+    border: none;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 12px 0 28px; /* Added more padding on the left so the text doesn't hit the X */
+    position: relative; 
+    
+    /* 2. Default: KOTAK (0 radius) biar nempel satu sama lain jadi satu bar */
+    border-radius: 0; 
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+/* 3. KHUSUS TAB AKTIF: Dia 'loncat' jadi bentuk kapsul di tengah bar */
+.activeTab {
+    background: var(--card-bg) !important; /* Warna putih/terang */
+    color: var(--text-primary) !important;
+    
+    /* Nah ini baru dikasih radius biar jadi pil/kapsul */
+    border-radius: 20px !important; 
+}
+
+.inactiveTab:hover {
+    background: rgba(0, 0, 0, 0.03);
+    /* Pas hover boleh dikasih radius dikit biar cantik */
+    border-radius: 20px; 
+}
+
+/* Hilangin separator kalo ganggu, ganti pake border tipis antar tab aja kalo perlu */
+.separator {
+    width: 1px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 0;
+}
+
+/* ─── Dark Mode ─────────────────────────────────────────── */
+[data-theme="dark"] .tabBar {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .urlBar {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Controls & Buttons --- */
+.controls {
+  width: 120px; /* Diperlebar sedikit agar switch-nya muat dengan rapi bersama tombol '+' */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* Keeps them vertically centered */
+  gap: 16px; /* Adds nice spacing */
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.iconButton:hover {
+  transform: scale(1.1);
+}
+
+/* --- 🎯 Close Tab Button Styles --- */
+
+.closeTabBtn {
+    position: absolute;
+    left: 8px; /* Pushes it to the far left of the tab */
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 50%;
+    color: #3a3a3a;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+}
+
+.closeTabBtn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+[data-theme="dark"] .closeTabBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Uiverse Theme Switch ─────────────────────────────────────────── */
+
+/* The switch - the box around the slider */
+.switch {
+  font-size: 14px; /* Dikecilkan sedikit agar lebih pas di toolbar Safari */
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ─── Uiverse Theme Switch (Reversed for Light Mode Default) ─── */
+
+/* The switch - the box around the slider */
+.switch {
+  font-size: 14px; 
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider (DEFAULT / LIGHT MODE) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #522ba7; /* Warna terang/siang */
+  transition: .5s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  /* Bentuk Matahari penuh (Default) */
+  box-shadow: inset 15px -4px 0px 15px #fff000;
+  background: transparent;
+  transition: .5s;
+}
+
+/* KETIKA DI-KLIK (DARK MODE) */
+.switch input:checked + .slider {
+  background-color: #28096b; /* Warna gelap/malam */
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(100%);
+  /* Berubah jadi bentuk Bulan Sabit */
+  box-shadow: inset 8px -4px 0px 0px #fff000;
+  background: #28096b; 
+}
+

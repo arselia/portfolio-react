@@ -1,0 +1,184 @@
+/* src/sections/projects/projects.module.css */
+
+.section {
+    --retro-cream: #f4ebd8;
+    --retro-orange: #e25f38;
+    --retro-yellow: #f4b942;
+    --forest-green: #2c4c3b;
+    --retro-dark: #2a2626;
+    
+    background-color: var(--forest-green);
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(244, 235, 216, 0.05) 0px,
+        rgba(244, 235, 216, 0.05) 20px,
+        transparent 20px,
+        transparent 40px
+    );
+    
+    min-height: 100vh;
+    width: 100%;
+    /* 🚨 Tweak this: Top, Left/Right, BOTTOM, Left/Right */
+    padding: 6rem 2rem 10rem 2rem; 
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mainTitle {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 900; 
+    color: var(--retro-cream);
+    margin-bottom: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 6px 6px 0px var(--retro-orange);
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 4rem;
+}
+
+/* --- The Container --- */
+.cardContainer {
+    position: relative;
+    height: 500px; 
+    perspective: 1000px;
+}
+
+/* --- The Inner Cartridge (Slides Up) --- */
+.cartridge {
+    position: absolute;
+    top: 0; 
+    left: 10px;
+    right: 10px;
+    height: 95%; 
+    
+    background: var(--retro-cream);
+    border: 3px solid var(--retro-dark);
+    border-radius: 8px 8px 0 0;
+    padding: 1.5rem 1.5rem 240px 1.5rem; 
+    
+    display: flex;
+    flex-direction: column;
+    z-index: 1; 
+    
+    /* 🚨 THE MAGIC FIX: */
+    transform: translateY(180px); 
+    /* This cuts off exactly the 180px that was spilling out the bottom! */
+    clip-path: inset(0px 0px 180px 0px); 
+    
+    /* Smoothly animate both the slide and the un-clipping */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), clip-path 0.4s ease;
+}
+
+/* 3. Restore the full cartridge when hovered */
+.cardContainer:hover .cartridge {
+    transform: translateY(-120px); 
+    /* 🚨 Remove the clip so the whole cartridge is visible again */
+    clip-path: inset(0px 0px 0px 0px); 
+}
+
+.description {
+    color: var(--retro-dark);
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    line-height: 1.5;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.techBadge {
+    background: var(--retro-yellow);
+    color: var(--retro-dark);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 800; 
+    border: 2px solid var(--retro-dark);
+}
+
+/* --- The Outer Sleeve (The Fixed Front) --- */
+.sleeve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2; /* Always on top */
+    background: var(--retro-orange);
+    border: 4px solid var(--retro-dark);
+    border-radius: 12px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 0px var(--retro-dark);
+    overflow: hidden;
+}
+
+.projectImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--retro-dark);
+    filter: grayscale(20%) contrast(110%);
+}
+
+.projectTitle {
+    padding: 1rem;
+    color: var(--retro-cream);
+    font-size: 1.4rem; 
+    font-weight: 900; 
+    text-transform: uppercase;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.button {
+    display: block;
+    background: var(--retro-dark);
+    color: var(--retro-cream);
+    padding: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: auto;
+    border-top: 3px solid var(--retro-dark);
+    transition: background 0.2s;
+}
+
+.button:hover {
+    background: var(--forest-green);
+}
+
+/* Dark Mode: Swapping the palette to a "Night Mode Arcade" */
+@media (prefers-color-scheme: dark) {
+    .section {
+        --retro-cream: #1a1818;
+        --retro-dark: #f4ebd8;
+        --forest-green: #16261e;
+    }
+}

@@ -1,0 +1,152 @@
+/* src/sections/skills/skills.module.css */
+
+.section {
+    /* Modern Ocean Glass Palette */
+    --bg-deep: #050a14; /* Deep midnight blue */
+    --blue-primary: #3b82f6; /* Vivid modern blue */
+    --blue-glow: rgba(59, 130, 246, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-hover: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-bright: #ffffff;
+    --text-dim: #94a3b8;
+    
+    background-color: var(--bg-deep);
+    /* Soft ambient blue glow behind the hive */
+    background-image: radial-gradient(circle at 50% 50%, var(--blue-glow) 0%, transparent 60%);
+    
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 6rem 2rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* --- Title Styling --- */
+.titleContainer {
+    text-align: center;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300; 
+    color: var(--text-bright);
+    margin: 0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.modernLine {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue-primary), transparent);
+    box-shadow: 0 0 15px var(--blue-glow);
+}
+
+/* --- THE GLASS CLUSTER --- */
+.hiveCluster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hexRow {
+    display: flex;
+    justify-content: center;
+}
+
+/* Vertical interlock */
+.hexRow + .hexRow {
+    margin-top: -40px; 
+}
+
+/* --- The Hexagon Wrapper --- */
+.hexWrapper {
+    position: relative;
+    width: 140px;
+    height: 162px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    z-index: 1;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+.hexWrapper:hover {
+    transform: scale(1.1) translateY(-5px); 
+    z-index: 100;
+}
+
+/* --- The Frosted Glass Hexagon --- */
+.glassHex {
+    width: 136px; 
+    height: 158px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    box-shadow: inset 0 0 0 1px var(--glass-border);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.hexWrapper:hover .glassHex {
+    background: var(--glass-hover);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 
+                0 0 20px var(--blue-glow);
+}
+
+/* --- Icons & Text --- */
+.iconContainer {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    opacity: 0.7;
+}
+
+.hexWrapper:hover .iconContainer {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.iconImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.name {
+    font-size: 0.75rem;
+    font-weight: 500; 
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 10px;
+    transition: color 0.4s ease;
+}
+
+.hexWrapper:hover .name {
+    color: var(--text-bright);
+}

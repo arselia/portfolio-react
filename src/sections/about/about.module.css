@@ -1,0 +1,211 @@
+/* src/sections/about/about.module.css */
+
+.wrapper {
+  /* Soft Kawaii Theme Variables */
+  --bg-base: #fff5f8;
+  --bubble-pink: #ffc2d1;
+  --bubble-peach: #ffe5ec;
+  --text-primary: #594a4e;
+  --text-secondary: #7e6a6f;
+  --accent-main: #ff7494;
+  --accent-light: #ffa6ba;
+  
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(255, 255, 255, 1);
+  --shadow-soft: rgba(255, 116, 148, 0.15);
+  
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, var(--bg-base) 0%, #fff 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+/* --- Floating Bubbles --- */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bubble-peach), var(--bubble-pink));
+  box-shadow: inset -10px -10px 20px rgba(255,255,255,0.5), 
+              5px 5px 20px var(--shadow-soft);
+  z-index: 0;
+  opacity: 0.8;
+  animation: floatUp 15s infinite ease-in-out alternate;
+}
+
+.bubbleOne { width: 120px; height: 120px; top: 10%; left: 10%; animation-delay: 0s; }
+.bubbleTwo { width: 200px; height: 200px; bottom: 15%; right: 8%; animation-delay: -3s; }
+.bubbleThree { width: 80px; height: 80px; top: 40%; right: 20%; animation-delay: -7s; }
+.bubbleFour { width: 150px; height: 150px; bottom: -5%; left: 25%; animation-delay: -10s; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  100% { transform: translateY(-40px) scale(1.05) rotate(10deg); }
+}
+
+/* --- Main Layout --- */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: 350px 1fr;
+    align-items: start;
+    gap: 4rem;
+  }
+}
+
+.headerColumn {
+  position: sticky;
+  top: 4rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800; /* Standardized Bold */
+  color: var(--accent-main);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.sparkle {
+  font-size: 2rem;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  font-weight: 700; /* Standardized Bold */
+}
+
+/* --- Content Cards --- */
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cloudCard {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 3px solid var(--card-border);
+  padding: 2rem;
+  border-radius: 30px; /* Super rounded cute corners */
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  transition: transform 0.3s ease;
+}
+
+.cloudCard:hover {
+  transform: translateY(-5px);
+}
+
+.bioText {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-weight: 500; /* Standardized Body Weight */
+  margin: 0;
+}
+
+.bioText b {
+  color: var(--accent-main);
+  font-weight: 800; /* Standardized Bold */
+}
+
+/* --- Mini Info Grid --- */
+.highlightGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.miniCard {
+  background: #ffffff;
+  border: 2px dashed var(--accent-light);
+  padding: 1.5rem;
+  border-radius: 24px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.miniCard:hover {
+  transform: scale(1.05) rotate(-2deg); /* Playful tilt */
+  border-style: solid;
+  border-color: var(--accent-main);
+  box-shadow: 0 8px 20px var(--shadow-soft);
+}
+
+.miniCard h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-light);
+  margin-bottom: 0.5rem;
+  font-weight: 800; /* Standardized Bold */
+}
+
+.miniCard p {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-weight: 700; /* Standardized Bold */
+  margin: 0;
+}
+
+/* --- Bouncy Button --- */
+.actionContainer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bouncyButton {
+  background: var(--accent-main);
+  color: #ffffff;
+  padding: 14px 32px;
+  border-radius: 50px; /* Pill shape */
+  text-decoration: none;
+  font-weight: 800; /* Standardized Bold */
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px var(--shadow-soft), 
+              inset 0 -3px 0 rgba(0,0,0,0.1); /* Cute bottom lip */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bouncyButton:hover {
+  background: var(--accent-light);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 25px var(--shadow-soft), 
+              inset 0 -3px 0 rgba(0,0,0,0.1);
+}
+
+.bouncyButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px var(--shadow-soft), 
+              inset 0 0px 0 rgba(0,0,0,0.1);
+}

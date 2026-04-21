@@ -1,0 +1,351 @@
+.container {
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 40px; 
+}
+
+/* --- Greeting --- */
+.greeting {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  letter-spacing: -0.5px;
+  margin-bottom: -10px; 
+}
+
+/* --- Search Bar --- */
+.searchContainer {
+  width: 100%;
+  max-width: 600px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 14px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(150, 150, 150, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.searchBar:focus-within {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.3), 0 12px 32px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 122, 255, 0.5);
+}
+
+.searchBar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+}
+
+.searchBar input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.searchIcon, .micIcon {
+  opacity: 0.5;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+.searchBar:focus-within .searchIcon {
+  color: var(--accent-main);
+  opacity: 1;
+}
+
+/* =========================================
+   ✨ NEW: 3D INTERACTIVE CARD WIDGET
+   ========================================= */
+
+/* =========================================
+   ✨ NEW: FLOATING RADIAL SPHERE WIDGET
+   ========================================= */
+
+.floatingWidget {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  z-index: 1000;
+}
+
+.card {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background: lightgrey;
+  /* Perfect Sphere Shape! */
+  border-radius: 50%; 
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px 0px;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Anchors the hover growth to the corner */
+  transform-origin: bottom left; 
+}
+
+.card:hover {
+  transform: scale(1.3);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 20px 50px 0px;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 100% 107%, #ff89cc 0%, #9cb8ec 30%, #00ffee 60%, #62c2fe 100%);
+  transition: opacity 0.5s ease;
+}
+
+.card:hover .background {
+  opacity: 0.8;
+}
+
+.logo {
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.logoSvg {
+  fill: white;
+  width: 35px;
+  height: 35px;
+  filter: drop-shadow(0px 2px 5px rgba(0,0,0,0.3));
+}
+
+/* Moves the logo into the bottom corner when expanded */
+.card:hover .logo {
+  transform: translate(0, 0);
+  bottom: 15px;
+  right: auto;
+  left: 15px;
+  scale: 0.7;
+}
+
+.box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0 100% 0 0; /* Creates the beautiful fan shape */
+  box-shadow: rgba(0, 0, 0, 0.1) -5px 5px 20px 0px;
+  transform-origin: bottom left;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(4px);
+  display: block;
+  /* Layers start hidden at scale 0 */
+  transform: scale(0);
+}
+
+/* Hovering the card fans all the layers out smoothly */
+.card:hover .box {
+  transform: scale(1);
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  z-index: -1;
+}
+
+/* Precise positioning for the new circular layout */
+.box .icon {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+
+.svgIcon {
+  fill: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.box:hover .svgIcon {
+  fill: white;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px white);
+}
+
+/* Layers, Sizes, and Colors */
+.box1 { width: 100%; height: 100%; z-index: 1; transition-delay: 0.1s; }
+.box1::before { background: radial-gradient(circle at 30% 107%, rgba(253, 244, 151, 0.8) 0%, rgba(255, 83, 212, 0.8) 60%); }
+.card:hover .box1:hover::before { opacity: 1; }
+.box1 .icon { top: 18%; right: 18%; }
+
+.box2 { width: 78%; height: 78%; z-index: 2; transition-delay: 0.15s; }
+.box2::before { background: radial-gradient(circle at 30% 107%, rgba(145, 233, 255, 0.8) 0%, rgba(0, 172, 238, 0.8) 90%); }
+.card:hover .box2:hover::before { opacity: 1; }
+.box2 .icon { top: 20%; right: 20%; }
+
+.box3 { width: 56%; height: 56%; z-index: 3; transition-delay: 0.2s; }
+.box3::before { background: radial-gradient(circle at 30% 107%, rgba(255, 150, 150, 0.8) 0%, rgba(255, 73, 73, 0.8) 90%); }
+.card:hover .box3:hover::before { opacity: 1; }
+.box3 .icon { top: 22%; right: 22%; }
+
+.box4 { width: 34%; height: 34%; z-index: 4; transition-delay: 0.25s; }
+.box4::before { background: radial-gradient(circle at 30% 107%, rgba(150, 159, 255, 0.8) 0%, rgba(179, 73, 255, 0.8) 90%); }
+.card:hover .box4:hover::before { opacity: 1; }
+.box4 .icon { top: 25%; right: 25%; }
+
+/* =========================================
+   --- Sections & Favorites ---
+   ========================================= */
+
+.section {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.bookmark {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bookmark:hover {
+  transform: scale(1.08);
+}
+
+.iconWrapper {
+  width: 70px;
+  height: 70px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(150, 150, 150, 0.15);
+  transition: box-shadow 0.2s ease;
+}
+
+.bookmark:hover .iconWrapper {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific scoping for the favorites grid icons */
+.bookmark .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--accent-main); 
+  transition: transform 0.2s ease;
+}
+
+.bookmark:hover .icon {
+  transform: scale(1.1);
+}
+
+.label {
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.noResults {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px dashed rgba(150, 150, 150, 0.3);
+}
+
+/* --- Privacy Report Card --- */
+.privacyCard {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(150, 150, 150, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: background 0.2s ease;
+  cursor: default;
+}
+
+.privacyCard:hover {
+  background: rgba(150, 150, 150, 0.04);
+}
+
+.privacyIcon {
+  font-size: 2.5rem;
+  display: inline-block;
+}
+
+.zoomiesAnimation {
+  animation: runAround 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes runAround {
+  0% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-15px) rotate(-15deg); }
+  75% { transform: translateX(15px) rotate(15deg) scaleX(-1); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.privacyText h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.privacyText p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
