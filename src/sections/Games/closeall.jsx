@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function CloseAll({ onReopen }) {
   const [answerStatus, setAnswerStatus] = useState('idle'); // 'idle', 'wrong', 'correct'

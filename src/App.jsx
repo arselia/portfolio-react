@@ -7,6 +7,7 @@ import CloseAll from './sections/Games/closeall';
 import Homepage from "./sections/homepage/Homepage";
 import Projects from "./sections/projects/Projects";
 import Skills from "./sections/Skills/Skills";
+import { useState, useEffect } from "react";
 import './index.css';
 
 function App() {
